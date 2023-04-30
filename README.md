@@ -40,6 +40,18 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
   + [How To Install Klipper On Creality Ender 3 S1: Config And Setup | 3D Print Beginner](https://3dprintbeginner.com/how-to-install-klipper-on-ender-3-s1/)
   + [How To Install FluiddPi On RaspberryPi | 3D Print Beginner](https://3dprintbeginner.com/how-to-install-fluiddpi-on-raspberry-pi/)
 
+
++ Wiring Stepper Motors
+  When replacing Creality 4.2.7 Mainboard some re-wiring needs to be done since stepper motor wires
+  interface with stock mainboard using 10P or 30P FFC cables, whereas SKR E3 Mini board uses JST-XH
+  connectors for individual stepper motors.
+  I'm trying out (o.g./vanilla) [Ender3 replacement motor
+  cables](https://www.amazon.com/dp/B07SYJQFKR?psc=1&ref=ppx_yo2ov_dt_b_product_details) at least for now, until I can verify functionality and then make my own.
+  + [Stepper Motor Wiring Conventions](https://caggius.wordpress.com/stepper-motor-wiring-conventions/)
+  + ![Stepper Motor Wiring](./resources/stepper_wiring.jpg)
+
+
+
 ### Ender 3 S1 - mainboard diagram
 [!img:./reference/BoardDiagram.jpg]
 
