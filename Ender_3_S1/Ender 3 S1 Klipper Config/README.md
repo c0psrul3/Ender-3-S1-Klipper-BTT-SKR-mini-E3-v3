@@ -14,5 +14,6 @@
 + [3dprintbeginner - Ender 3 S1 Klipper Config](https://3dprintbeginner.com/wp-content/uploads/2022/02/Ender-3-S1-Klipper-Config-1.zip)
 + [./jmedlin_Ender3-S1-Pro--Klipper-Config__printer.cfg](https://github.com/jmedlin/Ender3-S1-Pro--Klipper-Config/blob/main/README.md)
 + [./nickgarvey__s1-printer.cfg](https://gist.github.com/nickgarvey/b52aa81e0ef14dca58a501880d07df46)
++ [./VariousCaregiver1413_-_pastebin__printer.cfg](https://pastebin.com/m3vdX6Lk)
 
 
