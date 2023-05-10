@@ -1,0 +1,266 @@
+#Mainsail settings
+[include mainsail.cfg]
+ 
+##################Creality Ender 3 S1 Klipper Config - 3DPrintBeginner###################
+######Full guide: https://3dprintbeginner.com/how-to-install-klipper-on-ender-3-s1/######
+ 
+[stepper_x]
+step_pin: PC2
+dir_pin: PB9
+enable_pin: !PC3
+microsteps: 16
+rotation_distance: 40
+endstop_pin: !PA5
+position_endstop: 0
+position_min: 0
+position_max: 258
+homing_speed: 50
+ 
+[stepper_y]
+step_pin: PB8
+dir_pin: PB7
+enable_pin: !PC3
+microsteps: 16
+rotation_distance: 40
+endstop_pin: !PA6
+position_endstop: 0
+position_min: 0
+position_max: 230
+homing_speed: 50
+ 
+[stepper_z]
+step_pin: PB6
+dir_pin: !PB5
+enable_pin: !PC3
+microsteps: 16
+rotation_distance: 8
+endstop_pin: probe:z_virtual_endstop
+position_max: 270
+position_min: -5
+ 
+[extruder]
+max_extrude_only_distance: 100.0
+step_pin: PB4
+dir_pin: PB3
+enable_pin: !PC3
+microsteps: 16
+rotation_distance: 7.6190
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: PA1
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: PC5
+#control: pid
+#pid_Kp: 22.865
+#pid_Ki: 1.292
+#pid_Kd: 101.178
+min_temp: 0
+max_temp: 250
+pressure_advance = 0.12
+ 
+[filament_switch_sensor RunoutSensor]
+pause_on_runout: False
+runout_gcode: PAUSE
+insert_gcode: RESUME
+switch_pin: !PC15
+ 
+[heater_bed]
+heater_pin: PA7
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: PC4
+#control: pid
+#pid_Kp: 69.139
+#pid_Ki: 1.273
+#pid_Kd: 938.565
+min_temp: 0
+max_temp: 110
+ 
+ 
+[heater_fan hotend_fan]
+pin: PC0
+heater: extruder
+heater_temp: 50.0
+ 
+[fan]
+pin: PA0
+ 
+[mcu]
+serial: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+restart_method: command
+ 
+[printer]
+kinematics: cartesian
+max_velocity: 500
+max_accel: 2000
+max_accel_to_decel: 2000
+max_z_velocity: 5
+max_z_accel: 100
+square_corner_velocity: 5.0
+ 
+[bltouch]
+sensor_pin: ^PC14 
+control_pin: PC13 
+x_offset: -32
+y_offset: -41
+z_offset: 3.3
+speed:35
+samples:3
+samples_result: median
+samples_tolerance: 0.0075
+samples_tolerance_retries: 10
+probe_with_touch_mode: true
+stow_on_each_sample: false
+ 
+[safe_z_home]
+home_xy_position: 154,154
+speed: 100
+z_hop: 10
+z_hop_speed: 5
+ 
+[bed_mesh]
+speed: 120
+mesh_min: 10, 10
+#relative_reference_index: 45
+mesh_max: 225, 189
+algorithm: bicubic
+probe_count: 5,5
+split_delta_z: 0.0125
+#mesh_pps: 2,2
+move_check_distance: 3
+bicubic_tension: 0.2
+ 
+[bed_screws]
+screw1: 32, 35
+screw2: 205, 35
+screw3: 205, 202
+screw4: 32, 202
+ 
+[screws_tilt_adjust]
+screw1: 64, 76
+screw1_name: front left screw
+screw2: 237, 76
+screw2_name: front right screw
+screw3: 237, 230
+screw3_name: rear right screw
+screw4: 60, 230
+screw4_name: rear left screw
+horizontal_move_z: 10.
+speed: 50.
+screw_thread: CW-M3 # Use CW for Clowise and CCW for Counter Clockwise 
+ 
+ 
+[temperature_sensor Board_MCU]
+sensor_type: temperature_mcu
+min_temp: 0
+max_temp: 100
+ 
+[temperature_sensor Raspberry_Pi]
+sensor_type: temperature_host
+min_temp: 0
+max_temp: 100
+ 
+[virtual_sdcard]
+path: ~/gcode_files
+ 
+[display_status]
+ 
+[pause_resume]
+ 
+[gcode_macro PAUSE]
+description: Pause the actual running print
+rename_existing: PAUSE_BASE
+# change this if you need more or less extrusion
+variable_extrude: 1.0
+gcode:
+  ##### read E from pause macro #####
+  {% set E = printer["gcode_macro PAUSE"].extrude|float %}
+  ##### set park positon for x and y #####
+  # default is your max posion from your printer.cfg
+  {% set x_park = printer.toolhead.axis_maximum.x|float - 5.0 %}
+  {% set y_park = printer.toolhead.axis_maximum.y|float - 5.0 %}
+  ##### calculate save lift position #####
+  {% set max_z = printer.toolhead.axis_maximum.z|float %}
+  {% set act_z = printer.toolhead.position.z|float %}
+  {% if act_z < (max_z - 2.0) %}
+      {% set z_safe = 2.0 %}
+  {% else %}
+      {% set z_safe = max_z - act_z %}
+  {% endif %}
+  ##### end of definitions #####
+  PAUSE_BASE
+  G91
+  {% if printer.extruder.can_extrude|lower == 'true' %}
+    G1 E-{E} F2100
+  {% else %}
+    {action_respond_info("Extruder not hot enough")}
+  {% endif %}
+  {% if "xyz" in printer.toolhead.homed_axes %}
+    G1 Z{z_safe} F900
+    G90
+    G1 X{x_park} Y{y_park} F6000
+  {% else %}
+    {action_respond_info("Printer not homed")}
+  {% endif %} 
+ 
+[gcode_macro RESUME]
+description: Resume the actual running print
+rename_existing: RESUME_BASE
+gcode:
+  ##### read E from pause macro #####
+  {% set E = printer["gcode_macro PAUSE"].extrude|float %}
+  #### get VELOCITY parameter if specified ####
+  {% if 'VELOCITY' in params|upper %}
+    {% set get_params = ('VELOCITY=' + params.VELOCITY)  %}
+  {%else %}
+    {% set get_params = "" %}
+  {% endif %}
+  ##### end of definitions #####
+  {% if printer.extruder.can_extrude|lower == 'true' %}
+    G91
+    G1 E{E} F2100
+  {% else %}
+    {action_respond_info("Extruder not hot enough")}
+  {% endif %}  
+  RESUME_BASE {get_params}
+ 
+[gcode_macro CANCEL_PRINT]
+description: Cancel the actual running print
+rename_existing: CANCEL_PRINT_BASE
+gcode:
+  TURN_OFF_HEATERS
+  CANCEL_PRINT_BASE
+ 
+#*# <---------------------- SAVE_CONFIG ---------------------->
+#*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#*#
+#*# [bed_mesh default]
+#*# version = 1
+#*# points =
+#*# 	  -0.062500, 0.005000, 0.045000, 0.060000, 0.065000
+#*# 	  -0.117500, -0.050000, -0.002500, 0.002500, -0.010000
+#*# 	  -0.022500, 0.032500, 0.032500, 0.032500, 0.007500
+#*# 	  -0.047500, 0.020000, 0.035000, 0.030000, -0.007500
+#*# 	  -0.112500, -0.062500, -0.037500, -0.055000, -0.085000
+#*# tension = 0.2
+#*# min_x = 10.0
+#*# algo = bicubic
+#*# y_count = 5
+#*# mesh_y_pps = 2
+#*# min_y = 10.0
+#*# x_count = 5
+#*# max_y = 189.0
+#*# mesh_x_pps = 2
+#*# max_x = 225.0
+#*#
+#*# [extruder]
+#*# control = pid
+#*# pid_kp = 17.938
+#*# pid_ki = 0.747
+#*# pid_kd = 107.631
+#*#
+#*# [heater_bed]
+#*# control = pid
+#*# pid_kp = 66.055
+#*# pid_ki = 0.949
+#*# pid_kd = 1149.350
+ 
