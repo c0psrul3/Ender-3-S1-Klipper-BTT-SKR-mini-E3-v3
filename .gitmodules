@@ -1,0 +1,7 @@
+[submodule "Ender_3_S1/mriscoc_Ender3S1-Standard"]
+	path = Ender_3_S1/mriscoc_Ender3S1-Standard
+	url = https://github.com/mriscoc/Ender3S1-Standard
+	branch = Ender3s1-Beta
+[submodule "klipper-macros.jschuh"]
+	path = klipper-macros.jschuh
+	url = https://github.com/jschuh/klipper-macros
