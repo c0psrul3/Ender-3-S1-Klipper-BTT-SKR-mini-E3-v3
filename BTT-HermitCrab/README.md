@@ -21,6 +21,7 @@ Bus 001 Device 008: ID 0483:5740 STMicroelectronics Virtual COM Port
 ### Firmware Update with `dfu-util`
   [REF: youtube video](https://www.youtube.com/watch?v=ekbxtDS_8cM&t=3m46s)
   ```
+  # 
   dfu-util -a 0 -D firmware-F072-USB.bin --dfuse-address 0x08000000:force:mass-erase -d 0483:df11
   ```
 
@@ -28,5 +29,28 @@ Bus 001 Device 008: ID 0483:5740 STMicroelectronics Virtual COM Port
   ```
   Bus 001 Device 019: ID 1d50:614e OpenMoko, Inc. stm32f072xb
   ```
+
+### Klipper configuration of HermitCrab for extruder
+
+We're going to use the USB connection, for now, until we get more familiar with it
+### Klipper configuration of HermitCrab for extruder
+
+
+
+
+
+
+
+
+
+    Communication interface = USB (on PA11/PA12)
+    USB ids 0x1d50 for USB vender ID, and 0x614f for USB device ID. (Note: it is important that hte USB device ID is not the default 0x614e assigned by Klipper as this causes the device to lose connection during FIRMWARE_RESTART
+
+
+
+
+
+
+
 
 
