@@ -31,25 +31,31 @@ Bus 001 Device 008: ID 0483:5740 STMicroelectronics Virtual COM Port
   ```
 
 ### Klipper configuration of HermitCrab for extruder
-
-We're going to use the USB connection, for now, until we get more familiar with it
-### Klipper configuration of HermitCrab for extruder
-
-
-
-
-
-
-
-
-
+  + We're going to use the USB connection, for now, until we get more familiar with the HermitCrab.
+  
+    ```
     Communication interface = USB (on PA11/PA12)
-    USB ids 0x1d50 for USB vender ID, and 0x614f for USB device ID. (Note: it is important that hte USB device ID is not the default 0x614e assigned by Klipper as this causes the device to lose connection during FIRMWARE_RESTART
+    USB ids 0x1d50 for USB vender ID, and 0x614f for USB device ID. (Note: it
+    is important that hte USB device ID is not the default 0x614e assigned by
+    Klipper as this causes the device to lose connection during FIRMWARE_RESTART
+    ```
+  
+  + [HermitCrab Klipper Config Examples](https://github.com/bigtreetech/HermitCrab/blob/master/CanbusKlipper/Klipper/HermitCrab_Canbus_pins.cfg)
 
 
 
+### Moar stuff!
+
++ Hero Me Gen5 hotend assembly part cooling system contains the part cooling system STL files for HermitCrab
+
++ [HermitCrab Stealthburner mount](https://www.printables.com/model/221986)
+
++ [HermitCrab Drag Knife Mount](https://www.printables.com/model/83028)
 
 
+### Even Moaaaar!
+
++ [Hemera XS Fan Mount](https://www.printables.com/model/335053-hemera-xs-5015-fan-duct/files)
 
 
 
