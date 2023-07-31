@@ -4,7 +4,7 @@
 
 function _backup_mainsail_config() {
     local DRYRUN=1
-    local VERBOSE
+    local VERBOSE=1
     [[ ${1} == "-n" ]] || unset DRYRUN
     [[ ${1} == "-n" ]] || unset DRYRUN
     rsync ${DRYRUN:+-n} ${VERBOSE:+-v} -R -acb --copy-links \
