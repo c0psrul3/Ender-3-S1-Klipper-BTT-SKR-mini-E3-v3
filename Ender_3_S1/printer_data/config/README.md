@@ -17,3 +17,30 @@
 + [./VariousCaregiver1413_-_pastebin__printer.cfg](https://pastebin.com/m3vdX6Lk)
 
 
+
+## BLtouch / CRtouch config and notes [#bltouch]
+
+  + [BL-Touch - Docs](https://www.klipper3d.org/BLTouch.html#initial-tests)
+  + [BL-Touch - Config](https://www.klipper3d.org/Config_Reference.html?h=bltouch#bltouch)
+  + [BL-Touch - gcodes](https://www.klipper3d.org/G-Codes.html#bltouch)
+
+  #### CR-Touch Wiring Diagram/Pinout
+    * [Reference - Reddit post on crtouch wiring](https://www.reddit.com/r/Creality/comments/pl4fyv/creality_cr_touch_wiring_diagrampinout/)
+  
+  #### Wiring, Pinout, Klipper config
+    * pin order is left-to-right, viewed from the rear (backwards from view with "crtouch" logo on front)
+
+    * ![CRtouch wiring][crtouch_pinout]
+    |:------------:|:------------------------------:|:----------------------:|
+    |  Pin #       |  Description                   |   Klipper parameter    |
+    |:------------:|:------------------------------:|:----------------------:|
+    |  1 (RED)     |   GND                          |                        |
+    |  2 (GREEN)   |   +5V                          |                        |
+    |  3 (L. BLUE) |   PWM Signal                   |  bltouch[control_pin]  |
+    |  4 (D. BLUE) |   GND (for probe/endstop)      |                        |
+    |  5 (PURPLE)  |   SIGNAL (for probe/endstop)   |  bltouch[sensor_pin]   |
+    |:------------:|:------------------------------:|:----------------------:|
+
+
+
+[crtouch_pinout]: https://preview.redd.it/t8x2xttg6xv81.png

@@ -70,18 +70,18 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
 
 
 ### Ender 3 S1 - mainboard diagram
-  [!img:./reference/BoardDiagram.jpg]
+  ![./reference/BoardDiagram.jpg](./reference/BoardDiagram.jpg)
 
   ##### Sprite Extruder wire harness pinout - ProperPrinting.pro
-  [!img:https://properprinting.pro/wp-content/uploads/2022/02/pinout-1536x922.png]
+  ![https://properprinting.pro/wp-content/uploads/2022/02/pinout-1536x922.png](https://properprinting.pro/wp-content/uploads/2022/02/pinout-1536x922.png)
 
 ## BIGTREETECH SKR Mini E3 V3.0 (cutsheet)
-  [!img:https://cdn.shopifycdn.net/s/files/1/1619/4791/files/MINI_E3_-_1.jpg]
+  ![https://cdn.shopifycdn.net/s/files/1/1619/4791/files/MINI_E3_-_1.jpg](https://cdn.shopifycdn.net/s/files/1/1619/4791/files/MINI_E3_-_1.jpg)
 
 ## BIGTREETECH MANTA E3EZ V1.0
   [BTT Manta E3EZ V1.0 - Schematic](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-SCH.pdf)
-  [!img:https://raw.githubusercontent.com/bigtreetech/Manta-E3EZ/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-PIN.png?raw=true](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-PIN.png)
-  [!img:https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png?raw=true](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png)
+  [![BIGTREETECH%20Manta%20E3EZ%20V1.0-PIN.png](https://raw.githubusercontent.com/bigtreetech/Manta-E3EZ/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-PIN.png?raw=true)](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-PIN.png)
+  [![BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png?raw=true)](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png)
 
 
 
