@@ -1,5 +1,6 @@
-
 # E3D Hemera XS Revo
+
+---
 
 ## General info
 
@@ -115,7 +116,7 @@
       properties. Printing outside of the recommended temperatures can also
       potentially result in the production of toxic fumes.
 
- 
+--- 
 
 ## Setup
 
@@ -152,6 +153,8 @@
   (https://e3d-online.zendesk.com/hc/en-us/articles/4409935560081-Revo-Hemera-RepRap-Firmware-Guide)
     + Revo temp sensor type: "ATC Semitec 104NT-4-R025H42G"
 
+---
+
 ## Other
 
   ###  Revo Hemera XS Reference CAD 
@@ -159,3 +162,24 @@
 
   ###  Revo Reference Hemera CAD 
   (https://e3d-online.zendesk.com/hc/en-us/articles/4413023524497-Revo-Reference-Hemera-CAD)
+
+
+  ### TMC Stepper Motor Driver Current Calculation
+    source: [Hemera_Current_Adjustments](https://e3d-online.zendesk.com/hc/en-us/article_attachments/4402942989841/Hemera_Current_Adjustments.pdf)
+    > TMC 2100 calculation:
+    >   VREF= (RMS current x 2.5) / 1.77
+    >   VREF = (0.94 x 2.5) / 1.77
+    >   VREF = 2.35 / 1.77
+    >   VREF = 1.33
+    >   + NOTE: It is advised to add a 10% safety margin to avoid any over heating, decreasing the lifespan of the driver.
+    >   1.33 - 0.133 = 1.197
+    >   VREF = 1.197
+
+
+  ###  How to fix Dimensional Inaccuracy
+    (https://e3d-online.zendesk.com/hc/en-us/articles/6987725717149-How-to-fix-Dimensional-Inaccuracy)
+
+
+  ### Setting up a slicer profile for a new nozzle size 
+    [E3D Blog : Setting up a slicer profile for a new nozzle size](https://e3d-online.com/blogs/news/how-to-set-up-a-slicer-profile-for-a-new-nozzle-size)
+
