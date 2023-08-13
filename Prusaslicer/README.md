@@ -14,3 +14,12 @@ Prusaslicer
     [list of placeholders](https://help.prusa3d.com/article/list-of-placeholders_205643)
     [placeholder functions](https://help.prusa3d.com/article/macros_1775#functions)
 
+
+
+
+## Example PrusaSlicer Profiles:
+
+  * (https://github.com/AndrewEllis93/Ellis-SuperSlicer-Profiles)
+
+
+
