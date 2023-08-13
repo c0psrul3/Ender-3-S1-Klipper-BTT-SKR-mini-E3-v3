@@ -115,7 +115,7 @@ function _update_remote_config() {
         --exclude="*.BAK" \
         --exclude="*~" \
         --exclude="printer-$(date +%Y)*.cfg" \
-        ${LOCAL_BASEDIR%/}/./printer_data/$(git status --no-renames --short | awk '/^ M/ {print $NF}') \
+        ${LOCAL_BASEDIR%/}/./$(git status --no-renames --short | awk '/^ M/ {print $NF}') \
         ${KLIPPER_HOST}:printer_data/./config
 }
 
