@@ -42,5 +42,12 @@
     |:------------:|:------------------------------:|:----------------------:|
 
 
+## Extruder config
+
+  ### Orbiter 2.0 motor wiring
+
+    * I had to swap the pins of *one of the coils* for my LDO motor so that it will rotate in the correct direction.
+    * [see stepper motor wiring for reversing direction](https://electronics.stackexchange.com/questions/70643/how-to-reverse-rotation-direction-of-stepper-motor#70701)
+
 
 [crtouch_pinout]: https://preview.redd.it/t8x2xttg6xv81.png
