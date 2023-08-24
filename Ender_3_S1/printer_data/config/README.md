@@ -71,6 +71,11 @@
   + see also: [Faster Bed Mesh macro](https://3dprintbeginner.com/faster-klipper-bed-probing-macro/)
 
 
+## moar macros
+
+  + [Desuuuu/klipper-macros](https://github.com/Desuuuu/klipper-macros/tree/master/macros)
+
+
 ## Extruder config
 
   ### Orbiter 2.0 motor wiring
