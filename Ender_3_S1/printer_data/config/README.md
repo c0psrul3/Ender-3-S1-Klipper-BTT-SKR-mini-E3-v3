@@ -65,6 +65,11 @@
       desc=Beacon Surface Scanner
     ```
 
+## Bed Mesh (KAMP)
+  + [KAMP](https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging)
+
+  + see also: [Faster Bed Mesh macro](https://3dprintbeginner.com/faster-klipper-bed-probing-macro/)
+
 
 ## Extruder config
 
