@@ -42,6 +42,30 @@
     |:------------:|:------------------------------:|:----------------------:|
 
 
+## PINDA / proximity detection probes
+
+
+
+## Beacon3d ABL 
+  + using eddy currents for bed detection
+
+  + example moonraker source update config
+    ```cfg
+    [update_manager beacon]
+    type: git_repo
+    channel: dev
+    path: ~/beacon_klipper
+    origin: https://github.com/beacon3d/beacon_klipper.git
+    env: ~/klippy-env/bin/python
+    requirements: requirements.txt
+    install_script: install.sh
+    is_system_service: False
+    managed_services: klipper
+    info_tags:
+      desc=Beacon Surface Scanner
+    ```
+
+
 ## Extruder config
 
   ### Orbiter 2.0 motor wiring
