@@ -45,3 +45,7 @@
   + NOTE: subsequent flashing of the controller will not actually happen unless the new firmware bin file has a unique name from the previous.  recommendataion is to use the firmware version in the filename
 
 
+## BigTreeTech Pi
+  + flashing SDcard for BTT-pi (https://github.com/bigtreetech/CB1)
+
+
