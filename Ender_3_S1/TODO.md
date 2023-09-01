@@ -6,6 +6,10 @@ https://github.com/bigtreetech/smart-filament-detection-module/tree/master
 Orbiter Smart Filament Detector
 -------------------------------
 
+* FIX Macro: filament load
+* FIX Macro: filament unload
+* Implement Macro: orbiter filament load with smart sensor button
+
 
 
 Start / End PRINT macros
