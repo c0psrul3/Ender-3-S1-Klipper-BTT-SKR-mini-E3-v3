@@ -6,5 +6,5 @@
 	path = klipper-macros.jschuh
 	url = https://github.com/jschuh/klipper-macros
 [submodule "Ender_3_S1/klipper-macros.Desuuuu"]
-	path = Ender_3_S1/klipper-macros.Desuuuu
+	path = klipper-macros.Desuuuu
 	url = https://github.com/Desuuuu/klipper-macros
