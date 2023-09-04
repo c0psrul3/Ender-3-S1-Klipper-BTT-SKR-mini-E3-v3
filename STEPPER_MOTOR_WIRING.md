@@ -76,22 +76,35 @@
     
     ```
 
-### Motor Input connector (6-pin)
+### Motor Input connector (6-pin) - cable side, facing female pins
 
 
+    JST-PH  2.0mm connector - [specifications](../resources/JST-PH-connector-datasheet.pdf)
     ```
-    JST-PH  2.0mm connector
+    NOTE: this is the connector on the wire side (not the connector found on the motor itself)
+
     
-             COIL #2       COIL #1
-    
-         ___________________________
-         |                         |
-         |  ▢   O   O   O   O   O  |
-         |                         |
-         |___┌┐_______________┌┐___|
-    
-    PIN    (1) (2) (3) (4) (5) (6) 
-    
+              COIL #2           COIL #1
+          _______________   ________________
+
+          BLACK     BLUE  GREEN     RED
+            │    │    │    │    │    │
+            │    │    │    │    │    │
+            │    │    │    │    │    │
+       ┌──┬─┴────┴────┴────┴────┴────┴─┬───┬┐
+       │  │                            │   ││
+       │  │                            │   ││
+       │  │                            │   ││
+       │  └────────────────────────────┘   ││
+       │                                   ││
+       ├───┬─┬──┬─┬──┬─┬──┬─┬──┬─┬──┬─┬────┼│
+       │   └─┘  └─┘  └─┘  └─┘  └─┘  └─┘    ││
+       │                                   ││
+       ├───────────────────────────────────┼│
+       └────────────────────────────────────┘
+
+      PIN  (6)  (5)  (4)  (3)  (2)  (1) 
+
     ```
 
 ### Motor Control Wiring Diagram (with color-coded wires)
@@ -121,6 +134,7 @@
   * When testing continuity on motor input pins, you will find continuity between each of the pos/neg pins for each of the coils.
     This way you can verify your wiring from the controller's pinout is mostly correct, at least for each of the coils.
     Consult your motor's specifications for exactly what polarity is expected.
+
 
 ### If your motor is moving the wrong direction:
 
