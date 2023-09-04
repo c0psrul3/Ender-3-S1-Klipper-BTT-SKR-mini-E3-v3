@@ -16,6 +16,24 @@
 ## Klipper
   + [Ender 3 S1 Klipper Config - 3D Print Beginner](https://3dprintbeginner.com/wp-content/uploads/2022/02/Ender-3-S1-Klipper-Config-1.zip)
   + [Ender 3 S1 Klipper Config - local copy](./Ender 3 S1 Klipper Config/printer.cfg)
+  
+  ### IMPORTANT!  Creality stock stepper motor vref values
+    model: JK42HS34
+    (https://gist.github.com/knoopx/e6c40a009e796203b93a75a3ed6a5ab8)
+
+    > A4988 Drivers
+    > Vref set to ~90% of stepper rated current
+    > Rs = 0.1ohm
+    > 
+    > X = 0,58v (0,725A)
+    > Y = 0,58v (0,725A)
+    > Z = 0,58v (0,725A)
+    > E = 0,72v (0,900A)
+
+    be sure to use the `stepper_buzz` command to verify direction given current wiring, like this:
+    ```
+    STEPPER_BUZZ STEPPER=stepper_x
+    ```
 
   ### KAMP (https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging)
 
