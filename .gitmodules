@@ -8,3 +8,6 @@
 [submodule "Ender_3_S1/klipper-macros.Desuuuu"]
 	path = klipper-macros.Desuuuu
 	url = https://github.com/Desuuuu/klipper-macros
+[submodule "zippy-klipper_config.rootiest"]
+	path = zippy-klipper_config.rootiest
+	url = https://github.com/rootiest/zippy-klipper_config
