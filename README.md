@@ -60,6 +60,7 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
   + [Stepper Motor Wiring Conventions](https://caggius.wordpress.com/stepper-motor-wiring-conventions/)
   + ![Stepper Motor Wiring](./resources/stepper_wiring.jpg)
 
+  + [Reddit - Don't fry your mainboard with inappropriately wired X2.54 stepper motor connectors!](https://www.reddit.com/r/ender3/comments/dgunne/dont_fry_your_mainboard_with_inappropriately/)
 
   + understanding stepper motor wiring and suggestions on testing your motor to figure it out
     [Stepper Motor Wiring - makenprint.uk](https://www.makenprint.uk/3d-printing/3d-printing-guides/3d-printer-troubleshooting/stepper-motor-wiring/)
