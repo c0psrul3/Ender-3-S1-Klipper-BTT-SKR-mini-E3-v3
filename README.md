@@ -85,4 +85,11 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
   [![BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png?raw=true)](https://github.com/bigtreetech/Manta-E3EZ/blob/master/Hardware/BIGTREETECH%20Manta%20E3EZ%20V1.0-Interface.png)
 
 
+----
+## Building Klipper
+
+```sh
+KCONFIG_CONFIG=config.BIGTREETECH-SKR-mini-E3 make menuconfig
+KCONFIG_CONFIG=config.BIGTREETECH-SKR-mini-E3 make
+```
 
