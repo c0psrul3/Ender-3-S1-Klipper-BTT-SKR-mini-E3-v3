@@ -70,7 +70,7 @@ typeset _syncAction="backup"
 if [[ -z $1 ]] ; then
     __usage
 elif [[ "${1#--}" == "$1" ]] ; then
-    printf "[ERROR] Invalid Parameter, Option must be specified as a flag\n" >&2 
+    printf "[ERROR] Invalid Parameter, Option must be specified as a flag\n" >&2
     exit 1
 else
     _syncAction="${1#--}"
@@ -97,7 +97,7 @@ else
 fi
 
 
-typeset -g _filesList=""
+typeset _filesList=""
 if [[ -n "$_files" ]] || [[ ${#_files} > 0 ]] ; then
     printf ',%s' ${_files} | read -r _filesList
     _filesList="${_filesList#,}"
@@ -139,7 +139,6 @@ function _backup_remote_config() {
     fi
     [[ -n $VERBOSE ]] && printf "\n********\n" >&2
     ${VERBOSE:+echo} rsync ${_opts[*]} ${_rsync_default_opts[*]} \
-        --no-recursive \
         --exclude="*.swp" \
         --exclude="*.bkp" \
         --exclude="*.BAK" \
