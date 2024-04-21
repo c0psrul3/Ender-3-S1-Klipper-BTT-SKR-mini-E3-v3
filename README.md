@@ -51,7 +51,7 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
   + [How To Install FluiddPi On RaspberryPi | 3D Print Beginner](https://3dprintbeginner.com/how-to-install-fluiddpi-on-raspberry-pi/)
 
 
-+ Wiring Stepper Motors
++ Stepper Motor Wiring
   When replacing Creality 4.2.7 Mainboard some re-wiring needs to be done since stepper motor wires
   interface with stock mainboard using 10P or 30P FFC cables, whereas SKR E3 Mini board uses JST-XH
   connectors for individual stepper motors.

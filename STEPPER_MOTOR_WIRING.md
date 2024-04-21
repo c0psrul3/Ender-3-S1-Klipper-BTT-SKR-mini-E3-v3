@@ -169,4 +169,3 @@ Including Conventions with Examples
 
 
 
-# vim: ts=4 sts=4 sw=2 et
