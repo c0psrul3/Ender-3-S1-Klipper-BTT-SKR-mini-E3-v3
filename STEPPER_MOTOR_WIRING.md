@@ -1,9 +1,6 @@
-====================
-Stepper Motor Wiring
-====================
+# Stepper Motor Wiring
 
 Including Conventions with Examples
-
 
 *******************************************************************************
 
