@@ -143,6 +143,26 @@ Fig. 2.c
     Legend: X   cross wiring
             8)  motor coil
 
+
+### TMC2209 Schematic and Motor Wiring Reference
+
+* TMC2209 Pinout Labels and Functions [^5]
+
+    | PIN | Num |        Function       |
+    |:---:|:---:|:---------------------:|
+    | OA2 | 21  | Motor coil A output 2 |
+    | OA1 | 24  | Motor coil A output 1 |
+    | OB1 | 26  | Motor coil B output 1 |
+    | OB2 | 1   | Motor coil B output 2 |
+
+* example motor coil wiring diagram with TMC2209 pin labels
+    ![TMC2209_motor_wiring_with_TMC_labels.png](./resources/TMC2209_motor_wiring_with_TMC_labels.png)
+
+![TMC2209_wiring_schematic.png](./resources/TMC2209_wiring_schematic.png)
+
+* Reference: TMC2209 Datasheet rev1.08 [^5] 
+
+
 ----
 
 ## LDO motors are slightly different:
@@ -187,6 +207,8 @@ Fig. 2.c
 [^1]: [Explanation of stepper motor wiring](https://caggius.wordpress.com/stepper-motor-wiring-conventions/)
 [^2]: [Make 'n' Print - Stepper Motor Wiring](https://www.makenprint.uk/3d-printing/3d-printing-guides/3d-printer-mainboard-installation-guides/btt-skr-mini-e3-v3-guides/btt-skr-mini-e3-v3-setup-guide/#steppermotorwiring)
 [^3]: [Reddit - Don't fry your mainboard with inappropriately wired X2.54 stepper motor connectors!](https://www.reddit.com/r/ender3/comments/dgunne/dont_fry_your_mainboard_with_inappropriately/)
+[^5]: [Analog Devices Technical Documentation - TMC2209 Datasheet rev1.08](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.08.pdf)
+[^6]: [TMC2209_driver_schematic.png](./resources/TMC2209_wiring_schematic.png)
 
 
 
