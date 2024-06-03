@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Gcode Files Cleanup Weekly
+
+[Timer]
+OnBootSec=15min
+OnCalendar=weekly
+#OnCalendar=Sat *-*-1..7 18:00:00
+
+[Install]
+WantedBy=timers.target
+

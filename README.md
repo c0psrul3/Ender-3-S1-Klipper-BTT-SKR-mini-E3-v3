@@ -18,6 +18,14 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
 > example: BAUD_RATE_GCODE, INDIVIDUAL_AXIS_HOMING_SUBMENU, SOUND_MENU_ITEM,
 > LONG_FILENAME_WRITE_SUPPORT, BINARY_FILE_TRANSFER, POWER_LOSS_RECOVERY.
 
+
+## Other Random Stuff
+
++ create a systemd timer service to cleanup files in "printer_data/gcodes/"
+  See: [gcode-cleanup.timer](./resources/gcode-cleanup.timer)
+  See: [gcode-cleanup.service](./resources/gcode-cleanup.service)
+
+
 ----
 ## Links
 

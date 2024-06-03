@@ -1,0 +1,16 @@
+[Unit]
+Description=Run Gcode Files Cleanup Weekly
+Documentation=man:rsyslogd(8)
+Documentation=man:rsyslog.conf(5)
+Documentation=https://www.rsyslog.com/doc/
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/bin/find /home/pi/printer_data/gcodes/ -type f -name "*.gcode" -mtime +160 -print -delete
+#StandardOutput=null
+#Restart=never
+
+[Install]
+WantedBy=multi-user.target
+Alias=cleanup-gcode-files.service
