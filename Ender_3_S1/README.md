@@ -69,3 +69,8 @@
   + flashing SDcard for BTT-pi (https://github.com/bigtreetech/CB1)
 
 
+
+## SKR Mini E3v3 - Flashing via Canbus
+* [CanBoot: Flash BTT SKR 1.3 / 1.4 / 1.4 Turbo](https://klipper.discourse.group/t/canboot-flash-btt-skr-1-3-1-4-1-4-turbo/3238)
+* [Flashing Klipper friendly bootloader on BTT SKR Mini E3 v2](https://klipper.discourse.group/t/flashing-klipper-friendly-bootloader-on-btt-skr-mini-e3-v2/10977)
+
