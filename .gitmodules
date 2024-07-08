@@ -11,3 +11,6 @@
 [submodule "zippy-klipper_config.rootiest"]
 	path = zippy-klipper_config.rootiest
 	url = https://github.com/rootiest/zippy-klipper_config
+[submodule "klipper_canbus.maz0r"]
+	path = klipper_canbus.maz0r
+	url = https://github.com/maz0r/klipper_canbus
