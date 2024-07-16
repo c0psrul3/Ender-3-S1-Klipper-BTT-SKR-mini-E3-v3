@@ -21,6 +21,8 @@
 ## BigTreeTech EBB36
 [BTT Docs - EBB36](https://github.com/bigtreetech/docs/blob/master/docs/EBB%2036%20CAN.md)
 
+EBB36 V1.2 Pinout
+[!img:../resources/EBB36\ CAN\ V1.1\&V1.2-PIN.png]
 
 ### Setup instructions followed, as described [here](https://github.com/EricZimmerman/VoronTools/blob/main/EBB_CAN.md)
 
@@ -123,6 +125,17 @@
 
 [Klipper Docs - CANBUS](https://www.klipper3d.org/CANBUS.html)
 
+* Octopus Max Pinout
+  [!img:../resources/BIGTREETECH\ Octopus\ MAX\ EZ\ V1.0\ PinOut.png]
+
+* Octopus Max Peripheral Layout
+  [!img:../resources/Octopus_MAX_EZ_Peripheral.png]
+
+* Stepper and Stuff wiring diagram
+  [!img:../resources/octopus-stepper-and-stuff-wiring-diagram.png]
+
+* 120V bed heater wiring
+  [!img:../resources/BTTOctopus_Pro-ssr-SPI-wiring.png]
 
 ### Fan Control (3/4 pin)
 * PWM fans should not use voltage selection jumpers (eg. FAN4,FAN5,FAN6)
