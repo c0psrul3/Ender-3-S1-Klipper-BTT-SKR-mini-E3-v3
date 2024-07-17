@@ -9,7 +9,8 @@ Including Conventions with Examples
 
 ### Motor Diagram:
 
-![Creality_42-34_Stepper_Motor_Specs.jpg](./resources/Creality_42-34_Stepper_Motor_Specs.jpg)
+[Creality_42-34_Stepper_Motor_Specs.jpg](./resources/Creality_42-34_Stepper_Motor_Specs.jpg)
+<img src="./resources/Creality_42-34_Stepper_Motor_Specs.jpg" style="max-width: 50%">
 
 ### Motor Specifications:
 
@@ -32,17 +33,24 @@ Including Conventions with Examples
  + NOTE: Second coil leads identified as `B` and `D` are sometimes marked as A\` and B\`
 
 Fig 1.a
+      
+    PIN (COIL)
+                           ****    
+      1 (A) ───────)     **    **  
+                   )    *        * 
+                   )   *  MOTOR   *
+                   )    *        * 
+      3 (C) ───────)     **    **  
+                           ****    
+                                    
+                        ╭╮╭╮╭╮╭╮╭╮
+                        │        │  
+                        │        │  
+                                    
+                       (B)      (D)
+                                    
+                        4        6  
 
-     1 (A) -----,      ___
-                 )    /   \
-                 )   ( (M) )
-     3 (C) -----`     \___/
-              
-                     ╭╮╭╮╭╮
-                     |    |
-                     |    |
-                    (B)  (D)
-                     4    2
 
 ### Motor Input Connector Diagram (JST-PH 2.0mm):
 
@@ -62,6 +70,7 @@ Fig 1.b
 ### Coil Exciting Sequence:
 
 Fig 2.a
+
                _____________________________    
     Direction  | STEP  | A  | B  | C  | D  |  Direction
         ↓      |:-----:|:--:|:--:|:--:|:--:|      ↑
@@ -81,7 +90,7 @@ Fig 1.c
            2B  2A  1A  1B
         ┌─────────────────┐
         │                 │
-        │  ▢   O   O   O  │
+        │  O   O   O   O  │
         │                 │
         └──┬─┬───────┬─┬──┘
 

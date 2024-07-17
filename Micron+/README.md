@@ -153,4 +153,8 @@ EBB36 V1.2 Pinout
   [!img:https://s3-eu-central-1.amazonaws.com/euc-cdn.freshdesk.com/data/helpdesk/attachments/production/101038057173/original/Mfx4nDMokYS-xh5_1C_Bx0YWrghK4v-QNg.png?1666086047]
 
 
+## STLs
+
+* [R1 / BFI Z-Idlers](https://github.com/PrintersForAnts/Micron/tree/main/R1_Beta/STLs/Gantry/Idlers)
+* [R1 / X_axis / beacon_probe_mount_x1.stl](https://github.com/PrintersForAnts/Micron/blob/main/R1_Beta/STLs/Gantry/X_Axis/Probes/beacon_probe_mount_x1.stl)
 
