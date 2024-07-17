@@ -146,8 +146,9 @@ Fig. 2.c
 
 ### TMC2209 Schematic and Motor Wiring Reference
 
-* TMC2209 Pinout Labels and Functions [^5]
+* TMC2209 Pinout Labels and Functions [^TMC2209-Datasheet]
 
+  ```
     | PIN | Num |   Function    | SKR MINI E3 v3 (PIN) | MOTOR | INPUT | Multimeter  |
     |:---:|:---:|:-------------:|:--------------------:|:-----:|:-----:|:-----------:|
     | OB2 | 1   | Coil B #2 (-) |  2B ──────────────── | A     | PIN 1 |  ---B       |
@@ -156,36 +157,42 @@ Fig. 2.c
     | OA1 | 24  | Coil A #1 (+) |  1A ─┐└──│────────── | B     | PIN 4 |  ---P     E |
     |     |     |               |      └─────┐         |   NC  |       |           E |
     | OB1 | 26  | Coil B #1 (+) |  2A ─────┘ └──────── | D     | PIN 6 |        ---P |
+  ```
 
   NOTE: above "motor" referrs to 'LDO-42STH40-1684MAC'
 
 * example motor coil wiring diagram with TMC2209 pin labels
     ![TMC2209_motor_wiring_with_TMC_labels.png](./resources/TMC2209_motor_wiring_with_TMC_labels.png)
 
-* Below images show 'TMC2209 pinout schematic' and 'SKR_Mini_E3_V3 driver schematic'. Together, they
-  show the relation of driver pin labels and SKR Mini E3 V3 board pin assignments and can be compared
-  to TMC2209 Datasheet, specifically the example motor wiring diagrams.
+* Below illustrates how the JST-XH pinouts on the SKR board are tied to the TMC driver chip.
+  We can trace (bypassing BTT confusing pinout labels) the physical wire connection from driver chip
+  to the motor coils by comparing the motor wiring datasheet[^LDO] to TMC2209 Datasheet[^TMC2209-Datasheet].
+  ![BTT_SKR_Mini_E3_v3_TMC2209_schematic.png](./resources/BTT_SKR_Mini_E3_v3_TMC2209_schematic.png)
 
-  ![TMC2209_wiring_schematic.png](./resources/TMC2209_wiring_schematic.png)
-  ![BTT_SKR_Mini_E3_v3_TMC2209_schematic.png](resources/BTT_SKR_Mini_E3_v3_TMC2209_schematic.png)
+Together, they
+
+'TMC2209 pinout schematic' and 
+
+  ![TMC2209_driver_schematic.png](./resources/TMC2209_driver_schematic.png)
 
 * References:
-    * TMC2209 Datasheet rev1.08 [^5] 
-    * BTT SKR Mini E3 v3 Schematic [^7] 
-    * BTT SKR Mini E3 v3 driver pinout assignments [^8]
+    * TMC2209 Datasheet rev1.08 [^TMC2209-Datasheet] 
+    * BTT SKR Mini E3 v3 Schematic [^BTT-E3-SKR-MINI-V3-SCH] 
+    * [BTT SKR Mini E3 v3 Driver Example Pinout Schematic](./resources/BTT-SKR-Mini-E3-v3-TMC2209-schematic.png)
 
 ----
 
 ## LDO motors are slightly different:
 ...but much better documented
 
-[LDO Motor Specs - Google Sheet](https://docs.google.com/spreadsheets/d/1pF3C6IbiJz44WxOxgQQkXBXwV3a6IzvVz9nmk3owrdM/view)
-
-![LDO Stepper Coil Wiring](./resources/LDO-35STH52-1504AHVRN.png)
-
-#### Examples:
+* [LDO Motor Specs - Google Sheet](https://docs.google.com/spreadsheets/d/1pF3C6IbiJz44WxOxgQQkXBXwV3a6IzvVz9nmk3owrdM/view)
 + [LDO-42STH25-1404MAC](./resources/LDO-42STH25-1404MAC_TIM_RevA.pdf)
 + [LDO-42STH60-2004MAC](./resources/LDO-42STH60-2004MAC_RC_RevB.pdf)
++ [LDO-42STH25-1604AC - Micron+ Z-axis](./resources/LDO-42STH25-1404MAC_TIM_RevA.pdf)
+* [LDO-35STH52-1504AH(VRN) - Micron+ A/B](./resources/LDO-35STH52-1504AHVRN_RevA-technical-datasheet.pdf)
+<img src="./resources/LDO-35STH52-1504AH__Micron-AB.png" style="max-width: 100%">
+
+#### Examples:
 
 #### Notice the connector to coil wiring differences (ACBD vs. ABCD) for motors `42STH38-1684MAC` vs. `42STH47-1684MAC`
 + [LDO-42STH38-1684MAC](./resources/LDO-42STH38-1684MAC_TIM_RevA.pdf)
@@ -213,13 +220,34 @@ Fig. 2.c
     Motor direction can also be reversed in the firmware, so keep this in mind before possibly destroying your cable or connector.
 
 
+## TMC Driver Specs
+
+  * BigTreeTech EZ Driver Specs: [EZ2208][^EZ2208], EZ2209[^EZ2209], EZ2130[^EZ2130], EZ5160[^EZ5160]
+
+    |  Product     |  EZ 5160 Pro  |  EZ 5160 RGB  |  EZ 2130     |  EZ 2209     |  EZ 2208     |  EZ 2226     | EZ 6609      |
+    |:------------:|:-------------:|:-------------:|:------------:|:------------:|:------------:|:------------:|-------------:|
+    | Driver       |  TMC5160-TA   |  TMC5160-TA   |  TMC2130-LA  |  TMC2209-LA  |  TMC2208-LA  |  TMC2226-SA  |  GC6609      |
+    | Voltage      |  8-48V        |  8-48V        |  12-24V      |  12-24V      |  12-24V      |  12-24V      |  12-24V      |
+    | Max Current  |  2.5A         |  4.7A         |  2A(QFN)     |  2A          |  2A          |  2A          |  2A          |
+    | RMS Current  |  1.6A         |  3A           |  0.9A        |  1.3A        |  1.2A        |  1.3A        |  1.2A        |
+    | Mode         |  SPI          |  SPI          |  SPI         |  UART        |  UART        |  UART        |  UART        |
+    | Resistance   |  0.075 Ω      |  0.05 Ω       |  0.11 Ω      |  0.11 Ω      |  0.11 Ω      |  0.11 Ω      |  0.11 Ω      |
+    | StealthChop  |      ✔        |      ✔        |      ✔       |      ✔       |      ✔       |       ✔      |              |
+    | SpreadCycle  |      ✔        |      ✔        |      ✔       |      ✔       |      ✔       |       ✔      |              |
+    | StallGuard   |      ✔        |      ✔        |      ✔       |      ✔       |              |       ✔      |              |
+
+
+
 ## Additional References
 
 [^1]: [Explanation of stepper motor wiring](https://caggius.wordpress.com/stepper-motor-wiring-conventions/)
 [^2]: [Make 'n' Print - Stepper Motor Wiring](https://www.makenprint.uk/3d-printing/3d-printing-guides/3d-printer-mainboard-installation-guides/btt-skr-mini-e3-v3-guides/btt-skr-mini-e3-v3-setup-guide/#steppermotorwiring)
 [^3]: [Reddit - Don't fry your mainboard with inappropriately wired X2.54 stepper motor connectors!](https://www.reddit.com/r/ender3/comments/dgunne/dont_fry_your_mainboard_with_inappropriately/)
-[^5]: [Analog Devices Technical Documentation - TMC2209 Datasheet rev1.08](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.08.pdf)
+[^TMC2209-Datasheet]: [Analog Devices Technical Documentation - TMC2209 Datasheet rev1.08](https://www.analog.com/media/en/technical-documentation/data-sheets/TMC2209_datasheet_rev1.08.pdf)
 [^6]: [TMC2209_driver_schematic.png](./resources/TMC2209_wiring_schematic.png)
-[^7]: [BTT_E3_SKR_MINI_V3.0_SCH.pdf](.resources/BTT_E3_SKR_MINI_V3.0_SCH.pdf)
-[^8]: [BTT_SKR_Mini_E3_v3_TMC2209_schematic.png](./resources/BTT_SKR_Mini_E3_v3_TMC2209_schematic.png)
+[^BTT-E3-SKR-MINI-V3-SCH]: [BTT_E3_SKR_MINI_V3.0_SCH.pdf](.resources/BTT_E3_SKR_MINI_V3.0_SCH.pdf)
+[^EZ2209]: [BTT Driver EZ2209](https://bttwiki.com/EZ2209.html)
+[^EZ2208]: [BTT Driver EZ2209](https://bttwiki.com/EZ2208.html)
+[^EZ2130]: [BTT Driver EZ2130](https://bttwiki.com/EZ2130.html)
+[^EZ5160]: [BTT Driver EZ5160 Pro](https://bttwiki.com/EZ5160%20Pro.html)
 
