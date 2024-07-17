@@ -1,1 +1,0 @@
-Ender_3_S1/klipper_firmeware_build_config_backups/FIRMWARE-UPDATE-BTT-HermitCrab2-can.md
