@@ -1,0 +1,158 @@
+
+
+
+#
+# Git:repository
+# --------------
+#
+[advice]
+  addIgnoredFile = false
+  skippedCherryPicks = true
+[init]
+  templatedir = ~/.config/git/template
+  defaultBranch = master
+[commit]
+  gpgsign = false    ## TODO: fix gpg key uid to include `user.email`
+[branch]
+  autosetuprebase = always
+[push]
+  default = simple
+[pull]
+  #strategy = ours
+  ff = true
+  rebase = true
+  #strategy-options = ours
+[rebase]
+  autoStash = true
+[rerere]
+  enabled = true
+[diff]
+  tool = vimdiff
+  #external = vimdiff
+  #guitool = vimdiff
+[difftool]
+  prompt = true
+[diff "lesspipe"]
+  textconv = LESSQUIET=1 lesspipe
+  binary = true
+  cachetextconv = true
+[merge]
+  tool = vimdiff
+  #tool = /usr/bin/terminator --title='git-vim-diff' --geometry=1200x600x30x30 -x vim -d
+  #guitool = macvim
+  squash = true
+[mergetool]
+  keepBackup = false
+[mergetool.vimdiff]
+  path = /usr/bin/vimdiff
+#[mergetool.macvim]
+#  path = /usr/local/bin/MacVim
+#  #path = /Applications/MacVim.app/Contents/MacOS/MacVim
+#[mergetool.meld]
+#  cmd = 'meld "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+#  trustExitCode = false
+
+
+
+
+#
+# Git:aliases
+# -----------
+#
+[alias]
+  # This alias will use .vimrc when running vimdiff (display all colorscheme, statusline, etc.)
+  vimdiff = difftool -y -t vimdiff -R
+
+  # [Use_graphviz_for_display](https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display)
+  graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+
+  aa = add --all
+  b  = branch --show
+  br = branch
+  bv = branch -vv
+  ba = branch -ra
+  bd = branch -d
+  ca = commit --amend
+  cb = checkout -b
+  cm = commit -a --amend -C HEAD
+  ci = commit -a -v
+  co = checkout
+  d  = difftool
+  hist = log --graph --decorate --date=short --pretty=format:'%h %ad | %s%d [%an]'
+  rec = rebase --continue
+
+  #
+  # print the name of the current branch
+  this-branch = symbolic-ref HEAD --short
+
+  #quick look at active branch (or refs pointed)
+  ls  = log --color --oneline --graph --decorate --date=short --date-order
+
+  # quick look at all repo
+  logg = log --graph --date=relative --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]'
+  logg-since-master = !git log --graph --date=relative --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]' master..$(git branch --show-current)
+
+  #quick look at all repo (one-line output)
+  logc = log --graph --date=relative --oneline --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]'
+  logc-since-master = !git log --graph --date=relative --oneline --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]' master..$(git branch --show-current)
+
+  #quick look, simplify by merge
+  logm = log --graph --date=relative --simplify-by-merge --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]'
+  logm-since-master = !git log --graph --date=relative --simplify-by-merge --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]' master..$(git branch --show-current)
+
+  log-changes = log  --decorate --graph --numstat --date=relative --pretty='format:%C(yellow)%h %C(green)[%ad] %C(red bold)%d %n%C(reset)%s %C(blue)[%cn]%n'
+  log-changes-since-master = !git log  --decorate --graph --numstat --date=relative --pretty='format:%C(yellow)%h %C(green)[%ad] %C(red bold)%d %n%C(reset)%s %C(blue)[%cn]%n' master..$(git branch --show-current)
+
+  log-date = log --graph --decorate --date=local --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]'
+  log-date-since-master = !git log --graph --decorate --date=local --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]' master..$(git branch --show-current)
+
+  #Look with date (ugly -- TODO: change colors)
+  logd   = log --oneline --graph --date-order --date=iso --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]'
+                  ## --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ad%Creset %Cred%d%Creset %s\"
+  logd-since-master   = !git log --oneline --graph --date-order --date=iso --pretty='format:%C(yellow)%h %C(green)[%ad]%C(red bold)%d %C(reset)%s%C(blue) [%cn]' master..$(git branch --show-current)
+
+  #Look with relative date
+  logdr = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\"
+  log-short = log --color --full-history --graph --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"""
+  #lol = log --graph --full-history --all --color --date=short --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%ad %s""]]]"
+  lol = log --graph --decorate --date=short --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]"
+  flog = log --pretty=format:\"[%h %ae, %ar: %s\" --stat
+
+  lg = !git lg2 --date=iso
+  lg1 = !"git lg1-specific --all"
+  lg2 = !"git lg2-specific --all"
+  lg3 = !"git lg3-specific --all"
+
+  lg1-specific = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+  lg2-specific = log --graph --abbrev-commit --decorate --date='format:%D %R %z' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n'' %C(white)%s%C(reset)%n'' %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
+  mm = merge --no-ff
+  s  = status --branch --untracked-files=no
+  ss = status --short --branch --untracked-files=no
+  sm = !"git status --short --branch --untracked-files=no | awk '($1 == \"M\") {print $NF}'"
+  svim = !"git sm | xargs vim"
+  st = status --short --branch --untracked-files=normal
+  t  = tag --list
+  tg = tag -a
+  show-tags = !git tag --list -n | grep '^v[0-9]' | sort --version-sort
+  tags = !"git tag --list -n | awk '($1 ~ /[v][0-9]+/)' | sort --version-sort --reverse | head -n15"
+  #tags = tag --list -n
+  #tags-latest = tag --list -n | sort --version-sort --reverse | head -n15
+  pu = push --tags
+  un = reset --hard HEAD
+  uh = reset --hard HEAD^
+  type = cat-file -t
+  dump = cat-file -p
+  ctags = !.git/hooks/ctags
+  cr = clone --recursive
+  unstage = reset
+  log-date-relative = log --graph --decorate --date=relative --pretty=format:%C(yellow)%h\\ %C(green)%ad%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]
+
+  log-date-iso8601 = log --graph --decorate --date=iso8601 --pretty=format:%C(yellow)%h\\ %C(green)%ad%C(red)%d\\ %C(reset)%s%C(blue)\\ [%cn]
+  log = lg2
+  root = rev-parse --show-toplevel
+  check = ls-files
+  diff = diff-so-fancy | less --tabs=4 -RFXS --pattern '^(Date|added|deleted|modified): '
+
+

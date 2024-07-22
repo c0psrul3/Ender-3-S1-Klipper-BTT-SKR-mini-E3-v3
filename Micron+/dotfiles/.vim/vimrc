@@ -1,0 +1,163 @@
+runtime! debian.vim
+
+" Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
+" This happens after /etc/vim/vimrc(.local) are loaded, so it will override
+" any settings in these files.
+" If you don't want that to happen, uncomment the below line to prevent
+" defaults.vim from being loaded.
+" let g:skip_defaults_vim = 1
+
+set nocompatible
+syntax on
+
+filetype off
+filetype plugin on
+
+"" augroup filetypedetect  " Moved to ./ftdetect/<ext>.vim
+""|   au! BufRead,BufNewFile *.csv,*.dat,*.map  setfiletype csv
+""|   au! BufRead,BufNewFile *.vimrc  setfiletype vim
+"" These examples should go in individual files,i.e.: "$VIM/ftdetect/<ext>.vim"
+""|   au! BufRead,BufNewFile *.csv,*.dat,*.map  set ft=csv
+""|   au! BufRead,BufNewFile *.vimrc  set filetype=vim
+""| augroup END
+
+
+set background=dark
+
+colorscheme monokai
+
+" Set the leader key
+let mapleader = '\'
+let maplocalleader = '\'
+
+" List of directory names for the swap file, separated with commas.
+"  - The [swap file] will be created in the first directory where possible.
+
+augroup vimrc
+  set encoding=utf-8
+  " The following are commented out as they cause vim to behave a lot
+  " differently from regular Vi. They are highly recommended though.
+  set showcmd               " Show (partial) command in status line.
+  set showmatch               " Show matching brackets.
+  
+  set showmode                 " Last line.
+  set ttyfast                  " Rendering.
+  set smartcase               " Do smart case matching
+  set nosmartindent
+  set incsearch               " Incremental search
+  set hlsearch
+  set tabstop=4 softtabstop=0 shiftwidth=4 expandtab
+  set number nornu             " show line numbers
+  set backspace=indent,eol,start     " Allow backspacing over everything in insert mode
+  set history=500              " keep xxx lines of command line history
+  set ruler                    " show the cursor position all the time
+  set wildmenu                 " Enable auto completion menu after pressing TAB.
+  set wildmode=list:longest    " Make wildmenu behave like similar to Bash completion.
+  set laststatus=2             " Status bar.
+  set hidden                   " Allow hidden buffers.
+  set visualbell
+  set modelines=0
+  set mouse=vi                 " only allow mouse in visual or insert modes
+  set cursorline
+  "set cursorcolumn
+  "set colorcolumn=80          " Show color column at 80 characters width, visual reminder of keepingcode line within a popular line width.
+
+  " Instantly leave insert mode when pressing <Esc>
+  set nottimeout
+  set ttimeoutlen=0
+
+  "" use locateion of file for swap files
+  "setlocal directory=~/.vim/swap
+  " keep an undo file (undo changes after closing)
+  "!mkdir ~/.cache/vim/undo
+  setlocal undodir=~/.cache/vim/undo
+  " keep a backup file (restore to previous version)
+  "!mkdir ~/.cache/vim/backup
+  setlocal backupdir=~/.cache/vim/backup
+
+  " Auto save before commands like :next or :make
+  setlocal  undofile  backup  autowrite
+ 
+  " Don't use Ex mode, use Q for formatting
+  map Q gq
+
+  " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+  " so that you can undo CTRL-U after inserting a line break.
+  inoremap <C-U> <C-G>u<C-U>
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  au BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+
+  "" auto-read open file changes
+  set autoread | au CursorHold * checktime | call feedkeys("lh")
+
+  "" diff split vertically
+  set diffopt=vertical,filler,context:3
+  " Convenient command to see the difference between the current buffer and the
+  " file it was loaded from, thus the changes you made.
+  " Only define it when not defined already.
+  if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+            \ | wincmd p | diffthis
+  endif
+  " Macro to use git diff on current file name.
+  map <leader>gd :!git diff %<CR>
+
+  set showbreak=↪     " Use custom fillchars/listchars/showbreak icons
+  set fillchars=vert:│,fold:┄,diff:╱
+  "" Replace (irregular) whitespace for special chars
+  "set listchars=tab:»·,trail:·,eol:¶
+  "set listchars=tab:⋮\ ,trail:·,eol:·,precedes:◂,extends:▸
+  set listchars=tab:»·,trail:⌴,eol:¶,precedes:◂,extends:▸
+  "" set shortcut to show fill/break/decorations
+  "map <leader>w  :set list!<CR>
+  "map <F3> :set list!<CR>
+
+augroup END
+
+
+
+" Highlighting
+augroup Highlights
+  " Visual Mode Orange Background, Black Text
+  "hi Visual          ctermbg=Yellow  ctermfg=None
+  " Change Color when entering Insert Mode
+  "autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
+  autocmd InsertEnter * highlight  Cursor guibg=#00AAFF
+  
+  " Revert Color to default when leaving Insert Mode
+  "autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
+  autocmd InsertLeave * highlight  Cursor guibg=#A6E22E
+
+augroup END
+
+
+
+nmap  J  :join<CR>
+
+nmap <C-j>   10j
+nmap <C-k>   10k
+vmap <S-j>   3j
+vmap <S-k>   3k
+
+nmap <RIGHT> gt
+nmap <LEFT>  gT
+
+"" special for my keyboard
+nmap  4      10j
+nmap  5      10k
+
+
+" Source a global configuration file if available
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
+
+

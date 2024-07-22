@@ -14,3 +14,6 @@
 [submodule "klipper_canbus.maz0r"]
 	path = klipper_canbus.maz0r
 	url = https://github.com/maz0r/klipper_canbus
+[submodule "Micron+/Nitehawk-36"]
+	path = Micron+/Nitehawk-36
+	url = https://github.com/MotorDynamicsLab/Nitehawk-36
