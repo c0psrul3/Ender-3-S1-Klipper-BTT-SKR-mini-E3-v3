@@ -57,6 +57,7 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
   + [KIAUH](https://github.com/th33xitus/kiauh) - install Klipper,Moonraker,etc. (installer script)
   + [How To Install Klipper On Creality Ender 3 S1: Config And Setup | 3D Print Beginner](https://3dprintbeginner.com/how-to-install-klipper-on-ender-3-s1/)
   + [How To Install FluiddPi On RaspberryPi | 3D Print Beginner](https://3dprintbeginner.com/how-to-install-fluiddpi-on-raspberry-pi/)
+  + [Advanced Troubleshooting - Graphing klippy.log](https://klipper.discourse.group/t/advanced-trouble-shooting-graphing-klipper/6613)
 
 
 + Stepper Motor Wiring
@@ -75,6 +76,7 @@ From [mriscoc wiki](https://github.com/mriscoc/Ender3V2S1/wiki#versions) regardi
 
   + possible wiring diagrams:
   + https://www.youtube.com/watch?v=LLmWM-2FkvI
+
 
 
 

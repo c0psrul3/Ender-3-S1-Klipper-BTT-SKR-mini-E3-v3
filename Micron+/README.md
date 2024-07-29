@@ -17,6 +17,14 @@
 * [HoneyBadger Edge to Edge Heater](https://www.fabreeko.com/products/fabreeko-edge-to-edge-heaters-for-voron-printers?_pos=1&_sid=183997d92&_ss=r&variant=44851221692671)
   > Set klipper to Generic 3950 thermistor type
 
+* Belt lengths for AB motors.  Why they need to be the same length:
+    > As a thought exercise, assume 2 rubber bands each cut to lengths 100mm
+    > and another to 50mm, both with lines drawn on them with sharpie every 2mm.
+    > Next imagine they are both stretched to 150mm or 300mm or 1000mm.
+    > The lines won't be aligned, right? You don't want that for your belts. 
+    >   - @caza0455
+
+
 
 ## BigTreeTech EBB36
 [BTT Docs - EBB36](https://github.com/bigtreetech/docs/blob/master/docs/EBB%2036%20CAN.md)
