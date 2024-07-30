@@ -30,9 +30,6 @@ colorscheme monokai
 let mapleader = '\'
 let maplocalleader = '\'
 
-" List of directory names for the swap file, separated with commas.
-"  - The [swap file] will be created in the first directory where possible.
-
 augroup vimrc
   set encoding=utf-8
   " The following are commented out as they cause vim to behave a lot
@@ -59,14 +56,16 @@ augroup vimrc
   set modelines=0
   set mouse=vi                 " only allow mouse in visual or insert modes
   set cursorline
-  "set cursorcolumn
-  "set colorcolumn=80          " Show color column at 80 characters width, visual reminder of keepingcode line within a popular line width.
+  "set invcursorcolumn
+  set colorcolumn=80          " Show color column at 80 characters width, visual reminder of keepingcode line within a popular line width.
 
   " Instantly leave insert mode when pressing <Esc>
   set nottimeout
   set ttimeoutlen=0
 
-  "" use locateion of file for swap files
+  " List of directory names for the swap file, separated with commas.
+  "  - The [swap file] will be created in the first directory where possible.
+  "  - Use location of file for swap files (do not set directory)
   "setlocal directory=~/.vim/swap
   " keep an undo file (undo changes after closing)
   "!mkdir ~/.cache/vim/undo
@@ -117,14 +116,14 @@ augroup vimrc
   "set listchars=tab:⋮\ ,trail:·,eol:·,precedes:◂,extends:▸
   set listchars=tab:»·,trail:⌴,eol:¶,precedes:◂,extends:▸
   "" set shortcut to show fill/break/decorations
-  "map <leader>w  :set list!<CR>
-  "map <F3> :set list!<CR>
+  noremap <leader>w  :setlocal list!<CR>
 
 augroup END
 
 
-
+"
 " Highlighting
+"
 augroup Highlights
   " Visual Mode Orange Background, Black Text
   "hi Visual          ctermbg=Yellow  ctermfg=None
@@ -139,25 +138,40 @@ augroup Highlights
 augroup END
 
 
+"
+" Movement keymaps
+"
+nmap   <C-j>        3j
+nmap   <C-k>        3k
+vmap   <C-j>        3j
+vmap   <C-k>        3k
 
-nmap  J  :join<CR>
+nmap   <RIGHT>      gt
+nmap   <LEFT>       gT
 
-nmap <C-j>   10j
-nmap <C-k>   10k
-vmap <S-j>   3j
-vmap <S-k>   3k
+"" Special for DZ60 keyboard with L2 numpad
+nmap    4           10j
+nmap    5           10k
+vmap    4           10j
+vmap    5           10k
 
-nmap <RIGHT> gt
-nmap <LEFT>  gT
-
-"" special for my keyboard
-nmap  4      10j
-nmap  5      10k
-
-
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
+"" default behavior
+nnoremap    J           :join<CR>
+vnoremap    J           :join<CR>
 
 
+" when indenting, do not exit visual mode
+vnoremap < <gv
+vnoremap > >gv
+
+"" show cursorcolumn in insertmode 
+autocmd InsertEnter <buffer> setlocal cursorcolumn
+autocmd InsertLeave <buffer> setlocal cursorcolumn
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" EXAMPLE:  assign multiple commands to a single keymap
+"noremap <silent> <F2> <Cmd>set nu <Bar> setlocal cursorcolumn!<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"vim: set ft=vim ts=4 sts=0 sw=4 et nofen :
