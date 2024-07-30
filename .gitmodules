@@ -17,3 +17,6 @@
 [submodule "Micron+/Nitehawk-36"]
 	path = Micron+/Nitehawk-36
 	url = https://github.com/MotorDynamicsLab/Nitehawk-36
+[submodule "Micron+/dotfiles/.vim/colors/monokai"]
+	path = Micron+/dotfiles/.vim/colors/monokai
+	url = https://github.com/sickill/vim-monokai.git
