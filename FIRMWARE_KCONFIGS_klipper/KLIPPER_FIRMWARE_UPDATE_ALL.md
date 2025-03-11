@@ -1,8 +1,19 @@
 
+## BTT Octopus MAX
+## ---------------
+[BTT Wiki - Octopus Max](https://bttwiki.com/Octopus%20MAX%20EZ.html)
+1.  flash firmware with `make flash ...`
+    ```sh
+      make flash FLASH_DEVICE=/dev/serial/by-id/usb-Klipper_stm32h723xx_1E002B001251313236343430-if00
+    ```
 
-## BTT SKR Mini E3 v3
-## ------------------
-[BTT Wiki - SKR Mini E3 v3](https://bttwiki.com/SKR%20MINI%20E3.html)
+
+## LDO Nitehawk 36 USB
+[LDO Documentation - Nitehawk-36](https://docs.ldomotors.com/en/Toolboard/nitehawk-36#uploading-klipper-via-make-flash)
+1.  flash firmware with `make flash ...`
+    ```sh
+      make flash FLASH_DEVICE=/dev/serial/by-id/usb-Klipper_rp2040_30333938340AA3E0-if00
+    ```
 
 
 
@@ -39,6 +50,13 @@
     ```
 
 
+## BTT SKR Mini E3 v3
+## ------------------
+[BTT Wiki - SKR Mini E3 v3](https://bttwiki.com/SKR%20MINI%20E3.html)
+
+
+
+
 ##
 ## Firmware Update - HermitCrab2
 ##
@@ -67,7 +85,7 @@
   ```
 
 ##
-## Firmware Update - BTT-Eddy-usb
+## Firmware Update - BTT-SKR-Mini-E3-v3
 ##
   ```sh
   cd ~/klipper
